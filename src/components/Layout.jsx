@@ -15,6 +15,7 @@ import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined'
 import WarehouseOutlinedIcon from '@mui/icons-material/WarehouseOutlined'
 import Brightness4Icon from '@mui/icons-material/Brightness4'
 import Brightness7Icon from '@mui/icons-material/Brightness7'
+import { useNavigate, Link, Navigate } from 'react-router-dom'
 
 const drawerWidth = 240
 
@@ -26,12 +27,12 @@ const menuItems = [
     },
     {
         text: 'Contacts',
-        path: '/contacts',
+        path: 'contacts',
         icon: <PeopleOutlinedIcon />
     },
     {
         text: 'Storage',
-        path: '/storage',
+        path: 'storage',
         icon: <WarehouseOutlinedIcon />
     }
 ]
@@ -39,6 +40,7 @@ const menuItems = [
 const Layout = ({ children, mode, setMode }) => {
     const [mobileOpen, setMobileOpen] = useState(false)
     const [isClosing, setIsClosing] = useState(false)
+    const navigate = useNavigate()
 
     const handleDrawerClose = () => {
         setIsClosing(true)
@@ -63,9 +65,12 @@ const Layout = ({ children, mode, setMode }) => {
         <List>
             {menuItems.map(item => (
                 <ListItem key={item.text}>
-                    <ListItemButton component="a" href={item.path}>
+                    <ListItemButton component="a"
+                        onClick={() => navigate(item.path)}
+                    >
                         <ListItemIcon>{item.icon}</ListItemIcon>
                         <ListItemText primary={item.text} />
+
                     </ListItemButton>
                 </ListItem>
             ))}

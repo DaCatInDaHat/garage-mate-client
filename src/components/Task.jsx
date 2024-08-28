@@ -9,11 +9,10 @@ import { useNavigate } from 'react-router-dom'
 const Task = ({ task }) => {
     const navigate = useNavigate()
 
-    const handleClick = () => navigate(`/edit/${task._id}`)
     return (
         <Card>
             <CardActionArea
-                onClick={handleClick}
+                onClick={() => navigate(`/edit/${task._id}`)}
             >
                 <CardHeader
                     title={task.title}
