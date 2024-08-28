@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Board from './components/Board'
 import Contacts from './components/Contacts'
 import Storage from './components/Storage'
@@ -22,17 +22,17 @@ const App = () => {
     <>
       <ThemeProvider theme={appTheme}>
         <CssBaseline />
-        <Router>
+        <BrowserRouter>
           <Layout mode={mode} setMode={setMode}>
             <Routes>
               <Route exact path='/' element={<Board />} />
-              <Route path='/contacts' element={<Contacts />} />
-              <Route path='/storage' element={<Storage />} />
-              <Route path='/create' element={<Create />} />
-              <Route path='/edit/:id' element={<Edit />} />
+              <Route path='contacts' element={<Contacts />} />
+              <Route path='storage' element={<Storage />} />
+              <Route path='create' element={<Create />} />
+              <Route path='edit/:id' element={<Edit />} />
             </Routes>
           </Layout>
-        </Router>
+        </BrowserRouter>
       </ThemeProvider >
     </>
   )

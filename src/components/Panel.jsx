@@ -1,18 +1,21 @@
 import React from 'react'
 import { Button } from '@mui/material'
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Panel = () => {
-    // const navigateTo = useNavigate()
+    const navigate = useNavigate()
+
+    const handleClick = () => navigate('create')
 
     return (
         <Button
             variant='outlined'
             sx={{ m: 1 }}
-            href='/create'
+            onClick={handleClick}
         >
             Create
-        </Button>
+        </Button >
+
     )
 }
 
