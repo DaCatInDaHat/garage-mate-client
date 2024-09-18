@@ -6,13 +6,17 @@ import { Box } from '@mui/system'
 
 const Board = () => {
     const [tasks, setTasks] = useState(null)
+    const [isPending, setIsPending] = useState(true)
 
     useEffect(() => {
         const fetchTasks = async () => {
             const response = await fetch('https://garage-mate-server.onrender.com/tasks')
             const json = await response.json()
 
-            if (response.ok) setTasks(json)
+            if (response.ok) {
+                setTasks(json)
+                setIsPending(false)
+            }
         }
 
         fetchTasks()
@@ -21,6 +25,7 @@ const Board = () => {
     return (
         <Box>
             <Panel />
+            {isPending && <div>Fetching data...</div>}
             <Masonry columns={{ xs: 1, sm: 2, md: 4 }} spacing={{ xs: 1, sm: 2, md: 3 }}>
                 {tasks && tasks.map(task => (
                     <React.Fragment key={task._id}>
