@@ -5,7 +5,7 @@ import Masonry from '@mui/lab/Masonry'
 import { Box } from '@mui/system'
 
 const Board = () => {
-    const [tasks, setTasks] = useState([])
+    const [tasks, setTasks] = useState(null)
 
     useEffect(() => {
         const fetchTasks = async () => {
