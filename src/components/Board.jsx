@@ -3,6 +3,7 @@ import Panel from './Panel'
 import Task from './Task'
 import Masonry from '@mui/lab/Masonry'
 import { Box } from '@mui/system'
+import CircularProgress from '@mui/material/CircularProgress'
 
 const Board = () => {
     const [tasks, setTasks] = useState(null)
@@ -25,14 +26,18 @@ const Board = () => {
     return (
         <Box>
             <Panel />
-            {isPending && <div>Fetching data...</div>}
-            <Masonry columns={{ xs: 1, sm: 2, md: 4 }} spacing={{ xs: 1, sm: 2, md: 3 }}>
+
+            {isPending && (<Box display={'flex'} alignItems={'center'} justifyContent={'center'} height={'50vh'}>
+                <CircularProgress />
+            </Box>)}
+
+            {!isPending && (<Masonry columns={{ xs: 1, sm: 2, md: 4 }} spacing={{ xs: 1, sm: 2, md: 3 }}>
                 {tasks && tasks.map(task => (
                     <React.Fragment key={task._id}>
                         <Task task={task} />
                     </React.Fragment>
                 ))}
-            </Masonry>
+            </Masonry>)}
         </Box>
     )
 }
