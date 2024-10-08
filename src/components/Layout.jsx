@@ -131,7 +131,7 @@ const Layout = ({ children, mode, setMode }) => {
                     {drawer}
                 </Drawer>
             </Box>
-            <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+            <Box component="main" sx={{ flexGrow: 1, p: 3, width: '85%' }}>
                 <Toolbar />
                 {children}
             </Box>
